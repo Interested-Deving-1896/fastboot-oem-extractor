@@ -1,82 +1,75 @@
-# fastboot-oem-extractor 
-Extract hidden "fastboot oem" commands from firmware blobs
+[update-readmes]   Mode: rewrite — migrating to template structure...
+# fastboot-oem-extractor
 
-## Supported firmware
-These firmware blobs will be accepted by this tool 
-- `ABL` (Qualcomm)
-- `LK1st, LK2nd` (Qualcomm, Second BLs)
-- `LK` (MediaTek)
-- `FBPK` Containers (Google)
-- `DHTB` Signed binaries (U-Boot)
-- `ELF` Linux binaries
-- Anything else containing UEFI PEs
+[![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/fastboot-oem-extractor)
 
-This is an artificial barrier for when this tool is ran in a loop against firmware images
+<!-- AI:start:what-it-does -->
+_Description pending._
+<!-- AI:end:what-it-does -->
 
-## How to use:
-1. Install python requirements
-```shell
-pip install -r requirements.txt
+## Architecture
+
+<!-- AI:start:architecture -->
+_Architecture documentation pending._
+<!-- AI:end:architecture -->
+
+## Install
+
+<!-- Add installation instructions here. This section is yours — the AI will not modify it. -->
+
+```bash
+git clone https://github.com/Interested-Deving-1896/fastboot-oem-extractor.git
+cd fastboot-oem-extractor
 ```
 
-2. Prepare your firmware images from the internet, or by pulling them off the device with `adb`
-3. Run extractor.py against the image
-```shell
-# Example for Redmi Note 14 Pro+ 5G (amethyst)
+## Usage
 
-╭─user@hostname ~/fboem ‹master› 
-╰─$ python ./extractor.py ./abl.elf
-                  
-(x) File contains common bootloader magic bytes
-(x) Reading firmware file (first 10MB): abl.elf
-(x) Found valid UEFI firmware structure at offset: 0x1000
-(x) Extracting firmware...
-(x) Found 1 UEFI portable executable(s)
-(x) Matching 'oem *' ascii strings
+<!-- Add usage examples here. This section is yours — the AI will not modify it. -->
 
-fastboot oem allow-wipe-userdata
-fastboot oem audio-framework
-fastboot oem device-info
-fastboot oem disable-charger-screen
-fastboot oem dm-verity-enforcing
-fastboot oem edl
-fastboot oem enable-charger-screen
-fastboot oem fbreason
-fastboot oem getguid
-fastboot oem hwid
-fastboot oem lkmsg
-fastboot oem lock
-fastboot oem lpmsg
-fastboot oem off-mode-charge
-fastboot oem poweroff
-fastboot oem ramdump fat
-fastboot oem select-display-panel
-fastboot oem set-gpu-preemption
-fastboot oem set-hw-fence-value
-fastboot oem uart-enable
-fastboot oem uefilog
-fastboot oem unlock
+## Configuration
+
+<!-- Document configuration options here. This section is yours — the AI will not modify it. -->
+
+## CI
+
+<!-- AI:start:ci -->
+_CI documentation pending._
+<!-- AI:end:ci -->
+
+## Mirror chain
+
+<!-- AI:start:mirror-chain -->
+This repo is maintained in [`Interested-Deving-1896/fastboot-oem-extractor`](https://github.com/Interested-Deving-1896/fastboot-oem-extractor) and mirrored through:
+
+```
+Interested-Deving-1896/fastboot-oem-extractor  ──►  OpenOS-Project-OSP/fastboot-oem-extractor  ──►  OpenOS-Project-Ecosystem-OOC/fastboot-oem-extractor
 ```
 
-If your file is some sparse image that does not contain any UEFI PEs or common binary magic bytes,
-you can force the string lookup via this command line option:
-```shell
---force-string-lookup
-```
+Changes flow downstream automatically via the hourly mirror chain in
+[`fork-sync-all`](https://github.com/Interested-Deving-1896/fork-sync-all).
+Direct commits to OSP or OOC are detected and opened as PRs back to `Interested-Deving-1896`.
+<!-- AI:end:mirror-chain -->
 
-## Disclaimer:
-Due to the nature of simply matching "oem" strings, the output may contain some invalid commands,
-or commands that don't work after the device is sent out of factory. Keep this in mind
+## Contributors
 
-Also, some FBPK containers (e.g. `barbret` bootloader) are very difficult to extract
-`oem` commands from, and may not work. Most work just fine though.
+<!-- AI:start:contributors -->
+_Contributors pending._
+<!-- AI:end:contributors -->
 
-## Similar project
-If you want to extract bootloader/charging pictures from a `imagefv` partition on your Qualcomm device,
-use my other tool:
+## Origins
 
-[chickendrop89/imagefv-extractor](https://github.com/chickendrop89/imagefv-extractor)
+<!-- AI:start:origins -->
+_Original project — no upstream fork._
+<!-- AI:end:origins -->
 
-## Requirements
-- Python 3.10 or newer
-- Installed `uefi_firmware` pip package
+## Resources
+
+<!-- AI:start:resources -->
+_No additional resource files found._
+<!-- AI:end:resources -->
+
+## License
+
+<!-- AI:start:license -->
+[GPL-3.0](https://github.com/Interested-Deving-1896/fastboot-oem-extractor/blob/master/LICENSE) © 2026 [Interested-Deving-1896](https://github.com/Interested-Deving-1896)
+<!-- AI:end:license -->
